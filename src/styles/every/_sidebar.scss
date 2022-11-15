@@ -1,0 +1,36 @@
+//.parent {
+//  display:flex;
+//  flex-wrap: wrap;
+//
+//  & > * {
+//    flex-grow: 1;
+//    flex-shrink: 1;
+//    flex-basis: 30ch;
+//    background-color: red;
+//  }
+//
+//  &:nth-child(odd):last-child {
+//    //width:100%;
+//  }
+//}
+
+.with-sidebar {
+  display:flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .sidebar {
+    /* ↓サイドバーがサイドバーたりうる幅 */
+    flex-basis: 14rem;
+    flex-grow: 1;
+  }
+
+  .not-sidebar {
+    /* ↓ 0から新調する */
+    flex-basis:0;
+    flex-grow:999;
+
+    /* ↓ 要素の幅が等しくなった時に折り返す */
+    min-width: 55%;
+  }
+}

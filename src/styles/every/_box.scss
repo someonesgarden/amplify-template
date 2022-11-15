@@ -1,0 +1,32 @@
+.box-l {
+  display: block;
+  padding: var(--s1);
+
+  & * {
+    color: inherit;
+  }
+
+  & > * + * {
+    margin-block-start: var(--s1);
+  }
+
+  &.large {
+    & > * + * {
+      margin-block-start: var(--s1);
+    }
+  }
+
+  &.small {
+    & > * + * {
+      margin-block-start: var(--s-1);
+    }
+  }
+
+
+
+  &.border {
+    outline: var(--s-1) solid;
+    outline-offset: calc(var(--s-1) * -1);
+    border-width: var(--s-1);
+  }
+}

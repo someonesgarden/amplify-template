@@ -1,0 +1,12 @@
+.grid {
+  /* ↓ グリッドコンテキストを確立 */
+  display: grid;
+  grid-gap: var(--s1);
+
+  /* ↓ カラムの最小幅を設定 */
+  --minimum: 20ch;
+
+  @supports (width: min(250px, 100%)) {
+    grid-template-columns:repeat(auto-fit, minmax(min(var(--minimum), 100%), 1fr));
+  }
+}

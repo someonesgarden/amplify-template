@@ -1,0 +1,12 @@
+.stack-l {
+  position: relative;
+
+  &.border{
+    border-width: var(--s-1);
+  }
+
+  & > * + * {
+    margin-block-start: var(--s1);
+  }
+}
+

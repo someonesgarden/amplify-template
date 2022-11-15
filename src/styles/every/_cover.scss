@@ -1,0 +1,28 @@
+.cover {
+  --space: var(--s1);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  width: 100%;
+  padding: var(--space);
+
+  & > * {
+    margin-top: var(--space);
+    margin-bottom: var(--space);
+  }
+
+  /*↓ 中央の要素 */
+  & > &__center {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}

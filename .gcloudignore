@@ -1,0 +1,8 @@
+.gcloudignore
+.gitignore
+
+/node_modules/
+README.md
+
+/zip/
+next-env.d.ts

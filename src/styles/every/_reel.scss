@@ -1,0 +1,44 @@
+.reel {
+  display:flex;
+  /* ↓ 必要なのは水平方向のスクロールのみ */
+  overflow-x: auto;
+  scrollbar-color: var(--color-light) var(--color-dark);
+
+  border-width:var(--border-thin);
+
+  & > * {
+    //margin:0.5rem;
+    margin: var(--s0);
+    margin-right: 0;
+  }
+
+  &::-webkit-scrollbar {
+    height: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-dark);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark);
+    background-image: linear-gradient(
+    var(--color-dark) 0,
+    var(--color-dark) 0.25rem,
+    var(--color-light) 0.25rem,
+    var(--color-light) 0.75rem,
+    var(--color-dark) 0.75rem
+    );
+  }
+
+  & > img {
+    height: 100%;
+    width: auto;
+  }
+
+  &::after {
+    content: '';
+    flex-basis: var(--s0);
+    fle-shrink: 0;
+  }
+}

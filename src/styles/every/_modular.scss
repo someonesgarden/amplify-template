@@ -1,0 +1,65 @@
+.s1_squares {
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  & > * {
+    dislay: block;
+    background-color: black;
+  }
+}
+
+.s1_squares {
+  .s-1 {
+    width: var(--s-1);
+    height: var(--s-1);
+  }
+
+  .s-2 {
+    width: var(--s-2);
+    height: var(--s-2);
+  }
+
+  .s-3 {
+    width: var(--s-3);
+    height: var(--s-3);
+  }
+
+  .s-4 {
+    width: var(--s-4);
+    height: var(--s-4);
+  }
+
+  .s-5 {
+    width: var(--s-5);
+    height: var(--s-5);
+  }
+
+  .s1 {
+    width: var(--s1);
+    height: var(--s1);
+  }
+
+  .s2 {
+    width: var(--s2);
+    height: var(--s2);
+  }
+
+  .s3 {
+    width: var(--s3);
+    height: var(--s3);
+  }
+
+
+  .s4 {
+    width: var(--s4);
+    height: var(--s4);
+  }
+
+  .s5 {
+    width: var(--s5);
+    height: var(--s5);
+  }
+}

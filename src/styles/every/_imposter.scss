@@ -1,0 +1,16 @@
+.imposter {
+  /* ↓ 左上の角を中心に配置 */
+  position: var(--positioning, absolute);
+  top: 50%;
+  left: 50%;
+  /* ↓ 要素の中央が位置指定コンテナの中央になるように */
+  transform: translate(-50%, -50%);
+
+  &.contain{
+    /*↓ 単位を含めないとcalc関数が無効になる*/
+    --margin: 0px;
+    overflow: auto;
+    max-width: calc(100% - (var(--margin) * 2));
+    max-height: calc(100%  - (var(--margin) * 2));
+  }
+}

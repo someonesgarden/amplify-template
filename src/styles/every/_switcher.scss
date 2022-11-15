@@ -1,0 +1,43 @@
+.switcher {
+  --threshold: 30rem;
+  --space: 1rem;
+
+  & > * {
+    display: flex;
+    flex-wrap: wrap;
+    //margin: calc(var(--space) / 2 * -1);
+
+    gap: var(--gutter, var(--s1));
+
+  }
+
+  & > * > * {
+    flex-grow: 1;
+    //flex-basis: calc((var(--threshold) - (100% - var(--space))) * 999);
+
+    flex-basis: calc((var(--threshold) - 100%) * 999);
+
+    //margin: calc(var(--space) / 2);
+
+    &:last-child{
+      flex-grow: unset;
+    }
+  }
+
+  & > * > :nth-last-child(n+7),
+  & > * > :nth-last-child(n+7) ~ * {
+    /* ↓　７つ以上子要素が存在すれば垂直方向の配置に切り替え　*/
+    flex-basis:100%;
+    color:red;
+    background-color: red;
+  }
+
+
+}
+
+//////////
+
+
+.switcher {
+
+}
