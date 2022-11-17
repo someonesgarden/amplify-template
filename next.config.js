@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    SPOTIFY_CLIENT_ID: `${process.env.SPOTIFY_CLIENT_ID}`,
+    SPOTIFY_CLIENT_SEC: `${process.env.SPOTIFY_CLIENT_SEC}`,
+    BASIC_AUTH_ID: `${process.env.BASIC_AUTH_ID}`,
+    BASIC_AUTH_SEC: `${process.env.BASIC_AUTH_SEC}`,
+  },
   reactStrictMode: true,
   swcMinify: true,
   compiler: (() => {
@@ -27,12 +33,4 @@ const nextConfig = {
   },
 }
 
-module.exports = {
-  env: {
-    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
-    SPOTIFY_CLIENT_SEC: process.env.SPOTIFY_CLIENT_SEC,
-    BASIC_AUTH_ID: process.env.BASIC_AUTH_ID,
-    BASIC_AUTH_SEC: process.env.BASIC_AUTH_SEC,
-  },
-  ...nextConfig,
-}
+module.exports = nextConfig
