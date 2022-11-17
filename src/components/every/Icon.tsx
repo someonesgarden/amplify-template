@@ -4,7 +4,7 @@ export default function Icon() {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 10 10"
-      width="0.75em"
+      width="100%"
       height="0.75em"
       stroke="currentColor"
       strokeWidth="2"

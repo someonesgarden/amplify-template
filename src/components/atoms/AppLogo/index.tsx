@@ -3,7 +3,7 @@
  */
 const AppLogo = () => (
   <svg
-    width="40"
+    width="100%"
     height="40"
     viewBox="0 0 40 40"
     fill="none"

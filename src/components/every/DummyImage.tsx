@@ -25,7 +25,7 @@ const DummyImage = ({ width = 300, size = 10, ratio = 1 }: DummyImageProps) => {
       x="0px"
       y="0px"
       viewBox={`0 0 ${width} ${width * ratio}`}
-      width="auto"
+      width="100%"
       height="100%"
     >
       <rect
