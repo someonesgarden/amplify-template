@@ -10,6 +10,7 @@ import NewsArea from '../components/every/News'
 import Reel from '../components/every/Reel'
 import SearchBar from '../components/every/SearchBar'
 import Stack from '../components/every/Stack'
+import { basicAuthorization } from '../lib/basicAuth'
 
 const StyledContainer = styled.div`
   padding: 0 2rem;
@@ -25,7 +26,7 @@ const StyledContainer = styled.div`
   }
 `
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
   return (
     <StyledContainer>
       <main>
@@ -61,4 +62,9 @@ const Home: NextPage = () => {
   )
 }
 
+
+Home.getInitialProps = async ({ req, res }) => {
+  if (!process.browser) basicAuthorization(req, res)
+  return { stars: 123 }
+}
 export default Home
