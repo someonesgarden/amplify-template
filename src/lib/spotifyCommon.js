@@ -177,10 +177,6 @@ const arrayChunk = ([...array], size = 1) => {
   )
 }
 
-const getAuthInfo = () => {
-  return AUTH_COMMON
-}
-
 export default {
   saveAuth: saveAuth,
   execApi: execApi,
@@ -190,7 +186,6 @@ export default {
   getAuthorizeURL: getAuthorizeURL,
   getAuthorizeURLPopup: getAuthorizeURLPopup,
   arrayChunk: arrayChunk,
-  getAuthInfo: getAuthInfo,
   url: BASE_URL[MODE],
   clientId: process.env.SPOTIFY_CLIENT_ID,
   clientSec: process.env.SPOTIFY_CLIENT_SEC,
