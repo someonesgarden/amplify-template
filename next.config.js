@@ -24,9 +24,15 @@ const nextConfig = {
         destination: `${process.env.API_BASE_URL}/:match`,
       },
     ]
-  }
-
-
+  },
 }
 
-module.exports = nextConfig
+module.exports = {
+  env: {
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SEC: process.env.SPOTIFY_CLIENT_SEC,
+    BASIC_AUTH_ID: process.env.BASIC_AUTH_ID,
+    BASIC_AUTH_SEC: process.env.BASIC_AUTH_SEC,
+  },
+  ...nextConfig,
+}
