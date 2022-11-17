@@ -1,4 +1,3 @@
-import { IncomingMessage, ServerResponse } from 'http'
 import type { NextPage } from 'next'
 import styled from 'styled-components'
 import BoxArea from '../components/every/BoxArea'
@@ -11,6 +10,7 @@ import NewsArea from '../components/every/News'
 import Reel from '../components/every/Reel'
 import SearchBar from '../components/every/SearchBar'
 import Stack from '../components/every/Stack'
+import { basicAuthorization } from '../lib/basicAuth'
 
 const StyledContainer = styled.div`
   padding: 0 2rem;
@@ -60,35 +60,6 @@ const Home: NextPage = () => {
       <Footer />
     </StyledContainer>
   )
-}
-
-//////////////////////// BASIC 認証 /////////////
-const USER_PASS = process.env.BASIC_AUTH_ID + ':' + process.env.BASIC_AUTH_SEC
-const sendUnauthorized = (res: ServerResponse<IncomingMessage> | undefined) => {
-  res?.writeHead(401, { 'www-authenticate': 'Basic realm=secret string' })
-  res?.end()
-}
-
-export const basicAuthorization = (
-  req: IncomingMessage | undefined,
-  res: ServerResponse<IncomingMessage> | undefined,
-) => {
-  const authorization = req?.headers['authorization']
-  if (typeof authorization === 'undefined') {
-    sendUnauthorized(res)
-    return
-  }
-
-  const matches = authorization.match(/[^\s]+$/)
-  if (matches === null) {
-    sendUnauthorized(res)
-    return
-  }
-
-  const userPass = Buffer.from(matches[0], 'base64').toString()
-  if (userPass !== USER_PASS) {
-    sendUnauthorized(res)
-  }
 }
 
 Home.getInitialProps = async ({ req, res }) => {

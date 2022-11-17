@@ -1,5 +1,7 @@
 import { HomeIcons } from '../components/HomeIcons'
 
-export default {}
+const HomeIconsStories = {}
 
 export const Primary = () => <HomeIcons />
+
+export default HomeIconsStories
