@@ -1,5 +1,5 @@
 import spotifyCommon from '../../../../lib/spotifyCommon'
-//import mySession from '../../session';
+//import mySession from '../../session'
 
 export const config = {
   api: {

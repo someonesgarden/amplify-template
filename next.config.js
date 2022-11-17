@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
+    BASE_URL: `${process.env.BASE_URL}`,
     SPOTIFY_CLIENT_ID: `${process.env.SPOTIFY_CLIENT_ID}`,
     SPOTIFY_CLIENT_SEC: `${process.env.SPOTIFY_CLIENT_SEC}`,
     BASIC_AUTH_ID: `${process.env.BASIC_AUTH_ID}`,

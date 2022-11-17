@@ -2,15 +2,11 @@ import moment from 'moment'
 import SpotifyWebApi from 'spotify-web-api-node'
 import HttpManager from 'spotify-web-api-node/src/http-manager'
 import WebApiRequest from 'spotify-web-api-node/src/webapi-request'
-export const MODE = 'dev'
 
-const BASE_URL = {
-  DEV: 'http://localhost:3000',
-  PROD: 'https://main.dvqpdmasf1sf7.amplifyapp.com',
-}
+const BASE_URL = process.env.BASE_URL
 
 const AUTH_COMMON = {
-  appId: 'Spotify App Prototype',
+  appId: 'APP_Prototype',
   clientId: process.env.SPOTIFY_CLIENT_ID,
   clientSecret: process.env.SPOTIFY_CLIENT_SEC,
   scopes: [
@@ -40,7 +36,7 @@ let saveAuth = function (data, req) {
 let setSpotifyApi = function (req) {
   const AUTHS = {
     ...AUTH_COMMON,
-    redirectUri: BASE_URL[MODE] + '/api/callback',
+    redirectUri: BASE_URL + '/api/callback',
   }
 
   return new SpotifyWebApi({
@@ -54,7 +50,7 @@ let setSpotifyApi = function (req) {
 let setSpotifyApiPopup = function (req) {
   const AUTHS = {
     ...AUTH_COMMON,
-    redirectUri: BASE_URL[MODE] + '/api/callback/popup',
+    redirectUri: BASE_URL + '/api/callback/popup',
   }
   return new SpotifyWebApi({
     scope: AUTHS.scopes.join(' '),
@@ -186,7 +182,7 @@ export default {
   getAuthorizeURL: getAuthorizeURL,
   getAuthorizeURLPopup: getAuthorizeURLPopup,
   arrayChunk: arrayChunk,
-  url: BASE_URL[MODE],
+  url: BASE_URL,
   clientId: process.env.SPOTIFY_CLIENT_ID,
   clientSec: process.env.SPOTIFY_CLIENT_SEC,
 }

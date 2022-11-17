@@ -1,3 +1,4 @@
+import { login } from '../../../lib/hooks'
 import DummyImage from '../DummyImage'
 import Icon from '../Icon'
 import { CenterL } from '../Layout'
@@ -45,7 +46,9 @@ const Hero = () => {
         <p>description</p>
       </div>
 
-      <div>bottom</div>
+      <div>
+        <a onClick={() => login()}>Login</a>
+      </div>
     </div>
   )
 }
