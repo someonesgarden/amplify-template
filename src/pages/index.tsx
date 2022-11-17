@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import BoxArea from '../components/every/BoxArea'
 import CardGrids from '../components/every/CardGrids'
 import Footer from '../components/every/Footer'
-import Form from '../components/every/Form'
+//import Form from '../components/every/Form'
 import Grids from '../components/every/Grids'
 import Hero from '../components/every/Hero'
 import NewsArea from '../components/every/News'
@@ -26,7 +26,7 @@ const StyledContainer = styled.div`
   }
 `
 
-const Home: NextPage = (props) => {
+const Home: NextPage = () => {
   return (
     <StyledContainer>
       <main>
@@ -61,7 +61,6 @@ const Home: NextPage = (props) => {
     </StyledContainer>
   )
 }
-
 
 Home.getInitialProps = async ({ req, res }) => {
   if (!process.browser) basicAuthorization(req, res)

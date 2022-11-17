@@ -1,12 +1,17 @@
 //////////////////////// BASIC 認証 /////////////
+import { IncomingMessage, ServerResponse } from 'http'
+
 const USER_PASS = process.env.BASIC_AUTH_ID + ':' + process.env.BASIC_AUTH_SEC
-const sendUnauthorized = (res: any) => {
-  res.writeHead(401, { 'www-authenticate': 'Basic realm=secret string' })
-  res.end()
+const sendUnauthorized = (res: ServerResponse<IncomingMessage> | undefined) => {
+  res?.writeHead(401, { 'www-authenticate': 'Basic realm=secret string' })
+  res?.end()
 }
 
-export const basicAuthorization = (req: any, res: any) => {
-  const authorization = req.headers['authorization']
+export const basicAuthorization = (
+  req: IncomingMessage | undefined,
+  res: ServerResponse<IncomingMessage> | undefined,
+) => {
+  const authorization = req?.headers['authorization']
   if (typeof authorization === 'undefined') {
     sendUnauthorized(res)
     return
@@ -15,7 +20,7 @@ export const basicAuthorization = (req: any, res: any) => {
   const matches = authorization.match(/[^\s]+$/)
   if (matches === null) {
     sendUnauthorized(res)
-    return;
+    return
   }
 
   const userPass = Buffer.from(matches[0], 'base64').toString()
