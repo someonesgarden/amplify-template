@@ -1,5 +1,6 @@
 import MyLoader from '../components/MyLoader'
 
-export default {}
-
+const MyLoaderStories = {}
 export const Primary = () => <MyLoader />
+
+export default MyLoaderStories

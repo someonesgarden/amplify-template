@@ -1,5 +1,7 @@
 import MyForm from '../components/MyForm'
 
-export default {}
+const myFormStories = {}
 
 export const Primary = () => <MyForm />
+
+export default myFormStories

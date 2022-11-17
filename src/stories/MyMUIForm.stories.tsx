@@ -1,5 +1,7 @@
 import MyMUIForm from '../components/MyMUIForm'
 
-export default {}
+const MyMUIFormStories = {}
 
 export const Primary = () => <MyMUIForm />
+
+export default MyMUIFormStories
