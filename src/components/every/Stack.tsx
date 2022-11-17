@@ -1,25 +1,21 @@
-import styled from 'styled-components'
+import { CenterL } from './Layout'
 
-export const BoxL = styled.div`
-  display: block;
-  padding: var(--s1);
-  &.border-thin {
-    border-width: var(--border-thin);
-  }
+const Stack = () => {
+  return (
+    <CenterL max="40ch" min="80%" position="center">
+      <h1>Stack</h1>
+      <div className="box-l stack-l container border-thin">
+        <div className="box-l border" />
+        <div className="box-l border" />
+        <div className="box-l border" />
+        <div className="box-l border small">
+          <div className="box-l border" />
+          <div className="box-l border" />
+        </div>
+        <div className="box-l border" />
+      </div>
+    </CenterL>
+  )
+}
 
-  & * + * {
-    margin-block-start: var(--s1);
-  }
-
-  &.large {
-    & * + * {
-      margin-block-start: var(--s2);
-    }
-  }
-
-  &.small {
-    & * + * {
-      margin-block-start: var(--s-1);
-    }
-  }
-`
+export default Stack
