@@ -7,8 +7,8 @@ const options = {
   cookie: {
     httpOnly: true,
     secure: false,
-    maxAge: 1000 * 60 * 60 * 2,
+    maxage: 1000 * 60 * 60 * 2,
   },
 }
 
-export const getSession = nextSession(options)
+export const getSession = nextSession()

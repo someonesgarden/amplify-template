@@ -39,6 +39,8 @@ export default async (req, res) => {
             ? data.body.display_name
             : ''
           : ''
+        //const me = data.body.me.id ? data.body.me.id : data.body.me;
+        const product = res2.body.product
         const backto = req.session.backto ? req.session.backto : '/'
 
         req.session.access_token = access_token
@@ -53,8 +55,8 @@ export default async (req, res) => {
       },
       (err) => {
         res.redirect('/')
-        console.log('Could not get me!', err)
-        res.send('error;' + err.message)
+        //console.log('Could not get me!', err);
+        //res.send("error;" + err.message);
       },
     )
   })

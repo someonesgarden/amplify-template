@@ -1,7 +1,8 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { Provider } from 'react-redux'
 import { createGlobalStyle } from 'styled-components'
+import { useStore } from '../store'
+import '../styles/globals.scss'
 
 //グローバルのスタイル
 const GlobalStyle = createGlobalStyle`
@@ -10,7 +11,9 @@ const GlobalStyle = createGlobalStyle`
    }
 `
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
+  const store = useStore(pageProps.initialReduxState)
+
   return (
     <>
       <Head>
@@ -28,7 +31,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </>
   )
 }

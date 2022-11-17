@@ -1,4 +1,5 @@
-import type { NextPage } from 'next'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import BoxArea from '../components/every/BoxArea'
 import CardGrids from '../components/every/CardGrids'
@@ -26,7 +27,29 @@ const StyledContainer = styled.div`
   }
 `
 
-const Home: NextPage = () => {
+const Home = () => {
+  const dispatch = useDispatch()
+
+  const popupCallback = (e) => {
+    if (e.data && e.data.mode === 'auth') {
+      if (e.data.auth) {
+        const auth_ = { ...e.data.auth, new_product: e.data.auth.product }
+
+        console.log(auth_)
+
+        dispatch({ type: 'SET_AUTHORIZATION', value: auth_ })
+        // dispatch({type:"SET_PARAM", value:{key:"pModalIsOpen", val:true}});
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('message', popupCallback)
+    return () => {
+      window.removeEventListener('message', popupCallback)
+    }
+  }, [])
+
   return (
     <StyledContainer>
       <main>

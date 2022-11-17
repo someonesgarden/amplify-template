@@ -1,9 +1,16 @@
-import { login } from '../../../lib/hooks'
-import DummyImage from '../DummyImage'
-import Icon from '../Icon'
-import { CenterL } from '../Layout'
+import { useDispatch } from 'react-redux'
+import { login } from '../../lib/hooks'
+import DummyImage from './DummyImage'
+import Icon from './Icon'
+import { CenterL } from './Layout'
 
 const Hero = () => {
+  const dispatch = useDispatch()
+
+  const getSession = () => {
+    dispatch({ type: 'SAGA_SESSION_DATA' })
+  }
+
   return (
     <div className="box-l cover invert">
       <CenterL max="40ch" min="100%">
@@ -21,8 +28,8 @@ const Hero = () => {
           </div>
           <div className="cluster">
             <div className="border small">
-              <a className="with-icon">
-                <Icon /> menu1
+              <a className="with-icon" onClick={() => getSession()}>
+                <Icon /> session
               </a>
             </div>
             <div className="border small">
@@ -47,7 +54,7 @@ const Hero = () => {
       </div>
 
       <div>
-        <a onClick={() => login()}>Login</a>
+        <a onClick={() => login('popup')}>Login</a>
       </div>
     </div>
   )

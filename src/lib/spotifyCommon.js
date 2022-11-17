@@ -47,7 +47,7 @@ let setSpotifyApi = function (req) {
   })
 }
 
-let setSpotifyApiPopup = function (req) {
+let setSpotifyApiPopup = function () {
   const AUTHS = {
     ...AUTH_COMMON,
     redirectUri: BASE_URL + '/api/callback/popup',
@@ -72,7 +72,7 @@ const getAuthorizeURL = (req) => {
   return spotifyApi.createAuthorizeURL(AUTH_COMMON.scopes, state)
 }
 
-const getAuthorizeURLPopup = (req) => {
+const getAuthorizeURLPopup = () => {
   const spotifyApi = setSpotifyApiPopup()
   let state = ''
   let length = 40
@@ -82,45 +82,6 @@ const getAuthorizeURLPopup = (req) => {
     state += possible.charAt(Math.floor(Math.random() * possible.length))
   }
   return spotifyApi.createAuthorizeURL(AUTH_COMMON.scopes, state)
-}
-
-async function execApi(endpoint, rest, options, callback, req) {
-  //const spotifyApi = setSpotifyApi(req);
-
-  if (
-    !req.session ||
-    req.session.access_token === undefined ||
-    (req.session.expires_time &&
-      parseInt(req.session.expires_time) < moment(new Date()).unix() * 1000)
-  ) {
-    //access_tokenがない場合は、再生成する
-    // const client_creds = await spotifyApi.clientCredentialsGrant().then(data => data.body);
-    // if (client_creds) {
-    //   req.session.access_token = client_creds.access_token;
-    //   req.session.expires_time = new Date().getTime() + 3600 * 1000;
-    // }else {
-    //   console.log("no creds and error!");
-    // }
-    callback(null)
-    return
-  }
-
-  let builder = WebApiRequest.builder(req.session.access_token)
-    .withPath(endpoint)
-    .withHeaders({
-      'Content-Type': 'application/json',
-      'Accept-Language': 'ja;q=1',
-    })
-  if (options) builder.withQueryParameters(options)
-
-  return builder.build().execute(HttpManager[rest], function (err, data) {
-    if (err) {
-      callback(null)
-      return
-    }
-    //console.log(endpoint);
-    callback(data.body)
-  })
 }
 
 async function execApiAsync(endpoint, rest, options, req, bodies) {
@@ -175,7 +136,6 @@ const arrayChunk = ([...array], size = 1) => {
 
 export default {
   saveAuth: saveAuth,
-  execApi: execApi,
   execApiAsync: execApiAsync,
   setSpotifyApi: setSpotifyApi,
   setSpotifyApiPopup: setSpotifyApiPopup,

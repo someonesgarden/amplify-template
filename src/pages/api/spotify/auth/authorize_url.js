@@ -1,5 +1,5 @@
 import spotifyCommon from '../../../../lib/spotifyCommon'
-//import mySession from '../../session'
+import mySession from '../../session'
 
 export const config = {
   api: {
@@ -8,8 +8,8 @@ export const config = {
 }
 
 export default async (req, res) => {
-  //await mySession(req, res);
-  //if(req.query.backto) req.session.backto = req.query.backto;
+  await mySession(req, res)
+  if (req.query.backto) req.session.backto = req.query.backto
   let authorizeURL = spotifyCommon.getAuthorizeURL(req)
   res.send(authorizeURL)
 }
